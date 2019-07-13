@@ -7,11 +7,12 @@ This method works on the principal that any particular learning rate is only goo
 
 1. Train a model for a large number of epochs
 2. If the model's loss fails to improve for `n` epochs:
- 1. Take a snapshot of the model
- 2. Set training rate to `min_lr` and train for a batch
- 3. Increase the learning rate exponentially toward `max_lr` after every batch.
- 4. Once candidate learning rates have been exhausted, select `new_lr` as the learning rate that gave the steepest negative gradient in loss.
- 5. Set model's learning rate to `new_lr` and continue training as normal
+   1. Take a snapshot of the model
+   2. Set training rate to `min_lr` and train for a batch
+   3. Increase the learning rate exponentially toward `max_lr` after every batch.
+   4. Once candidate learning rates have been exhausted, select `new_lr` as the learning rate that gave the steepest negative gradient in loss.
+   5. Reload weights from the snapshot
+   5. Set model's learning rate to `new_lr` and continue training as normal
 
 
 I initially tried performing this process every `n` epochs, but it later occurred to me that I should do it only when loss stops improving (a la ReduceLROnPlateau), which is what this repository does.
