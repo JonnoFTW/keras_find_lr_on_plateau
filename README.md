@@ -3,7 +3,7 @@ A Keras callback to automatically adjust the learning rate when it stops improvi
 
 Learning rate finder is based off this code here: https://github.com/surmenok/keras_lr_finder which implements [Cyclical Learning Rates](https://arxiv.org/abs/1506.01186) by Lesie Smith but doesn't wrap it up completely.
 
-This method works on the principal that any particular learning rate is only good until it stops improving your loss. At that point you need to select a new learning rate, typically this is done by a decay function (as in `keras.callbacks.ReduceLROnPlateau`). The method used here is to simply search for the best learning rate by training for a few epochs, increasing the learning rate as we go and selecting the one that gives the largest learning rate improvement. The process is something like this:
+This method works on the principal that any particular learning rate is only good until it stops improving your loss. At that point you need to select a new learning rate, typically this is done by a decay function (as in `keras.callbacks.ReduceLROnPlateau`). The method used here is to simply search for the best learning rate by training for a few epochs, increasing the learning rate as we go and selecting the one that gives the largest loss improvement. The process is something like this:
 
 1. Train a model for a large number of epochs
 2. If the model's loss fails to improve for `n` epochs:
