@@ -1,5 +1,5 @@
-# keras_lr_optimiser_callback
-Keras Callback to Automatically Adjust the learning rate when it stops improving.
+# Find Best Learning Rate On Plateau 
+A Keras callback to automatically adjust the learning rate when it stops improving.
 
 Learning rate finder is based off this code here: https://github.com/surmenok/keras_lr_finder which implements [Cyclical Learning Rates](https://arxiv.org/abs/1506.01186) by Lesie Smith but doesn't wrap it up completely.
 
